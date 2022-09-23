@@ -1,26 +1,10 @@
 import reportWebVitals from '../reportWebVitals';
-import Booking from './booking';
-import { useState } from 'react';
 import Head from 'next/head';
-
-type TabsType = {
-  name: string;
-  index: number;
-  Component: React.FC<{}>;
-}[];
-
-const tabs: TabsType = [
-  {
-    name: 'Flight',
-    index: 0,
-    Component: Booking,
-  },
-];
+import FlightSearch from './flight-search';
 
 export const siteTitle = 'Low Fares Done Right | Frontier Airlines';
 
 export default function Home() {
-  const [selectedTab, setSelectedTab] = useState<number>(tabs[0].index);
   return (
     <>
       <Head>
@@ -29,8 +13,7 @@ export default function Home() {
         <meta name="description" content="Frontier Airlines book flights" />
         <meta name="og:title" content={siteTitle} />
       </Head>
-
-      <Booking></Booking>
+      <FlightSearch></FlightSearch>
     </>
   );
 }
@@ -38,7 +21,7 @@ export default function Home() {
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals(console.log);
 
 // import Head from 'next/head'
 
