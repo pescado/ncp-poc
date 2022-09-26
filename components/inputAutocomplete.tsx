@@ -1,14 +1,14 @@
-import React, { FC, KeyboardEvent } from "react";
+import { useState, KeyboardEvent } from "react";
 import { InputProps } from "../models/inputProps";
 import styles from './inputAutocomplete.module.scss';
 
 
-  const InputAutocomplete: FC<InputProps> = ({suggestions, placeholder, onClickFlightReference}) => {
+export default function InputAutocomplete({suggestions, placeholder, onClickFlightReference}: InputProps) {
     
-  const [activeSuggestion, setActiveSuggestion] = React.useState(0);
-  const [filteredSuggestions, setFilteredSuggestions] = React.useState<string[]>([]);
-  const [showSuggestions, setShowSuggestions] = React.useState(false);
-  const [userInput, setUserInput] = React.useState("");
+  const [activeSuggestion, setActiveSuggestion] = useState(0);
+  const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [userInput, setUserInput] = useState("");
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     const userInput = e.currentTarget.value;
@@ -90,7 +90,7 @@ import styles from './inputAutocomplete.module.scss';
           className={styles.inputAutocomplete}
           type="text"
           onChange={onChange}
-          onKeyDown={onKeyDown}
+          onKeyDown={(event) => onKeyDown(event)}
           value={userInput}
           placeholder = {placeholder}
         />
@@ -98,5 +98,3 @@ import styles from './inputAutocomplete.module.scss';
       </>
       );
   };
-
-  export default InputAutocomplete;

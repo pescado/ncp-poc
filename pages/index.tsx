@@ -20,7 +20,6 @@ export default function Home(props: {flightSelectData: FlightSelectData}) {
   );
 }
 
-
 export async function getServerSideProps() {
   // Fetch data from external API
   const res = await axios.post(`https://countriesnow.space/api/v0.1/countries/states`, {
