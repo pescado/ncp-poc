@@ -1,0 +1,17 @@
+.container {
+  padding: 1rem;
+  width: 900px;
+  height: calc(40vh + 48px);
+  box-shadow: 0 5px 8px -4px rgba(0, 0, 0, 0.4);
+  border-top: 2px solid gray;
+
+  .searchInputs {
+    display: flex;
+    // justify-content: space-around;
+  }
+
+  .searchButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
