@@ -13,9 +13,15 @@ export default function InputAutocomplete({ suggestions, placeholder, onClickFli
     const userInput = e.currentTarget.value;
 
     // Filter our suggestions that don't contain the user's input
-    const filteredSuggestions = suggestions.filter(
-      (suggestion: string) => suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1,
-    );
+    // const filteredSuggestions = suggestions.filter(
+    //   (suggestion: string) => suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1,
+    // );
+    let filteredSuggestions: string[] = [];
+    if (suggestions) {
+      filteredSuggestions = suggestions.filter(
+        (suggestion: string) => suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1,
+      );
+    }
 
     setActiveSuggestion(0);
     setFilteredSuggestions(filteredSuggestions);
@@ -23,7 +29,7 @@ export default function InputAutocomplete({ suggestions, placeholder, onClickFli
     setUserInput(e.currentTarget.value);
   }
 
-  function onClick(suggestion: string) {
+  function onSelectItem(suggestion: string) {
     setActiveSuggestion(0);
     setFilteredSuggestions([]);
     setShowSuggestions(false);
@@ -65,7 +71,7 @@ export default function InputAutocomplete({ suggestions, placeholder, onClickFli
               <li
                 className={cn({ [styles.suggestionActive]: index === activeSuggestion })}
                 key={suggestion}
-                onClick={() => onClick(suggestion)}
+                onClick={() => onSelectItem(suggestion)}
               >
                 {suggestion}
               </li>

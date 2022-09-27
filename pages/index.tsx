@@ -16,9 +16,8 @@ export default function Home(props: { flightSelectData: FlightSelectData }) {
         <meta name="description" content="Frontier Airlines book flights" />
         <meta name="og:title" content={siteTitle} />
       </Head>
-      <FlightSearch></FlightSearch>
+      <FlightSearch flightSelectData={props.flightSelectData}></FlightSearch>
     </div>
-    // <FlightSearch flightSelectData={props.flightSelectData} ></FlightSearch>
   );
 }
 

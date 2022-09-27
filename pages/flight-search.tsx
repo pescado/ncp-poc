@@ -1,44 +1,47 @@
 import { useRouter } from 'next/router';
 import InputAutocomplete from '../components/inputAutocomplete';
 import styles from '../styles/flight-search.module.scss';
-import Link from 'next/link';
 import { useState } from 'react';
 import { FlightSelectData } from '../models/FlightSelectData';
+import useSWR from 'swr';
 
-export default function FlightSearch() {
+export default function FlightSearch(props: { flightSelectData: FlightSelectData }) {
   const router = useRouter();
 
-  const [fromFlightSelect, setFromFlightSelect] = useState('');
-  const [toFlightSelect, setToFlightSelect] = useState('');
+  const [fromFlightSearch, setFromFlightSearch] = useState('');
+  const [toFlightSearch, setToFlightSearch] = useState('');
 
   const submitFromFlightSearch = (value: string) => {
-    setFromFlightSelect(value);
+    setFromFlightSearch(value);
   };
   const submitToFlightSearch = (value: string) => {
-    setToFlightSelect(value);
+    setToFlightSearch(value);
   };
   const submitFlightSearch = () => {
-    alert('Submitting from location: ' + fromFlightSelect + '. Submitting to location: ' + toFlightSelect);
+    alert('Submitting from location: ' + fromFlightSearch + '. Submitting to location: ' + toFlightSearch);
     router.push('/flight-select');
   };
+
+  const states = props.flightSelectData.data.states.map((state) => state.name);
+
   return (
     <>
       <h2>Search Flights</h2>
       <div className={styles.container}>
         <div className={styles.searchInputs}>
           <InputAutocomplete
-            suggestions={props.flightSelectData.data.states.map((state) => state.name)}
+            suggestions={states}
             placeholder="From"
             onClickFlightReference={submitFromFlightSearch}
           ></InputAutocomplete>
           <InputAutocomplete
-            suggestions={props.flightSelectData.data.states.map((state) => state.name)}
+            suggestions={states}
             placeholder="To"
             onClickFlightReference={submitToFlightSearch}
           ></InputAutocomplete>
         </div>
         <div className={styles.searchButtonContainer}>
-          <button onClick={submitFlightSearch} disabled={fromFlightSelect && toFlightSelect ? false : true}>
+          <button onClick={submitFlightSearch} disabled={fromFlightSearch && toFlightSearch ? false : true}>
             Search
           </button>
         </div>
