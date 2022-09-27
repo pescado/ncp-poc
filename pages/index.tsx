@@ -2,10 +2,12 @@ import reportWebVitals from '../reportWebVitals';
 import Head from 'next/head';
 import FlightSearch from './flight-search';
 import styles from '../styles/index.module.scss';
+import axios from 'axios';
+import { FlightSelectData } from '../models/FlightSelectData';
 
 export const siteTitle = 'Low Fares Done Right | Frontier Airlines';
 
-export default function Home() {
+export default function Home(props: { flightSelectData: FlightSelectData }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -16,13 +18,24 @@ export default function Home() {
       </Head>
       <FlightSearch></FlightSearch>
     </div>
+    // <FlightSearch flightSelectData={props.flightSelectData} ></FlightSearch>
   );
+}
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await axios.post(`https://countriesnow.space/api/v0.1/countries/states`, {
+    country: 'United states',
+  });
+  const flightSelectData = await res.data;
+  // Pass data to the page via props
+  return { props: { flightSelectData } };
 }
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals(console.log);
 
 // import Head from 'next/head'
 

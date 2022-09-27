@@ -1,17 +1,13 @@
-import React, { KeyboardEvent } from 'react';
+import { useState, KeyboardEvent } from 'react';
+import { IInputProps } from '../models/inputProps';
 import styles from './inputAutocomplete.module.scss';
 import cn from 'classnames';
 
-type InputProps = {
-  suggestions: string[];
-  id: string;
-};
-
-export default function InputAutocomplete({ suggestions, id }: InputProps) {
-  const [activeSuggestion, setActiveSuggestion] = React.useState(0);
-  const [filteredSuggestions, setFilteredSuggestions] = React.useState<string[]>([]);
-  const [showSuggestions, setShowSuggestions] = React.useState(false);
-  const [userInput, setUserInput] = React.useState('');
+export default function InputAutocomplete({ suggestions, placeholder, onClickFlightReference }: IInputProps) {
+  const [activeSuggestion, setActiveSuggestion] = useState(0);
+  const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [userInput, setUserInput] = useState('');
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     const userInput = e.currentTarget.value;
@@ -32,10 +28,10 @@ export default function InputAutocomplete({ suggestions, id }: InputProps) {
     setFilteredSuggestions([]);
     setShowSuggestions(false);
     setUserInput(suggestion);
+    onClickFlightReference(suggestion);
   }
 
   function onKeyDown(e: KeyboardEvent) {
-    const actSuggestion = activeSuggestion;
     const filterSuggestions = filteredSuggestions;
     // User pressed the enter key
     if (e.key === '13') {
@@ -60,7 +56,6 @@ export default function InputAutocomplete({ suggestions, id }: InputProps) {
   }
 
   let suggestionsListComponent;
-
   if (showSuggestions && userInput) {
     if (filteredSuggestions.length) {
       suggestionsListComponent = (
@@ -88,16 +83,16 @@ export default function InputAutocomplete({ suggestions, id }: InputProps) {
   }
 
   return (
-    <div>
+    <>
       <input
         className={styles.inputAutocomplete}
         type="text"
         onChange={onChange}
-        onKeyDown={onKeyDown}
+        onKeyDown={(event) => onKeyDown(event)}
         value={userInput}
-        id={id}
+        placeholder={placeholder}
       />
       {suggestionsListComponent}
-    </div>
+    </>
   );
 }
