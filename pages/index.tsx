@@ -26,7 +26,6 @@ export async function getServerSideProps() {
     "country": "United states"
   });
   const flightSelectData = await res.data;
-
   // Pass data to the page via props
   return { props: { flightSelectData } }
 }

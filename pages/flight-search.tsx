@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import InputAutocomplete from "../components/inputAutocomplete";
 import { FlightSelectData } from "../models/FlightSelectData";
@@ -29,7 +30,7 @@ export default function FlightSearch(props: { flightSelectData: FlightSelectData
         <InputAutocomplete suggestions={props.flightSelectData.data.states.map((state) => state.name)} placeholder="To" onClickFlightReference={submitToFlightSearch}></InputAutocomplete>
       </div>
       <div>
-        <button onClick={submitFlightSearch} disabled ={fromFlightSelect && toFlightSelect ? false : true }>Submit</button>
+        <button onClick={submitFlightSearch} disabled ={fromFlightSelect && toFlightSelect ? false : true }><Link href="/flight-select">Submit</Link></button>
       </div>
     </div>
     </>

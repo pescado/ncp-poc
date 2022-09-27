@@ -1,3 +1,3 @@
 export default function FlightSelect() {
-  return <div>Select flights</div>;
+  return <div>Select flights page</div>;
 }
