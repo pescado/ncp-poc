@@ -1,5 +1,8 @@
-export type InputProps = {
+export interface IInputProps extends IOnClickHandler {
     suggestions: string[];
     placeholder: string;
-    onClickFlightReference: any;
   };
+
+export interface IOnClickHandler {
+  onClickFlightReference: (value: string) => void;
+}

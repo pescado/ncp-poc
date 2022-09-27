@@ -1,9 +1,9 @@
 import { useState, KeyboardEvent } from "react";
-import { InputProps } from "../models/inputProps";
+import { IInputProps } from "../models/inputProps";
 import styles from './inputAutocomplete.module.scss';
 
 
-export default function InputAutocomplete({suggestions, placeholder, onClickFlightReference}: InputProps) {
+export default function InputAutocomplete({suggestions, placeholder, onClickFlightReference}: IInputProps) {
     
   const [activeSuggestion, setActiveSuggestion] = useState(0);
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
