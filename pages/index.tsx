@@ -7,7 +7,7 @@ import { FlightSelectData } from '../models/FlightSelectData';
 
 export const siteTitle = 'Low Fares Done Right | Frontier Airlines';
 
-export default function Home(props: { flightSelectData: FlightSelectData }) {
+export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -16,20 +16,21 @@ export default function Home(props: { flightSelectData: FlightSelectData }) {
         <meta name="description" content="Frontier Airlines book flights" />
         <meta name="og:title" content={siteTitle} />
       </Head>
-      <FlightSearch flightSelectData={props.flightSelectData}></FlightSearch>
+      {/* <FlightSearch flightSelectData={props.flightSelectData}></FlightSearch> */}
+      <FlightSearch></FlightSearch>
     </div>
   );
 }
 
-export async function getServerSideProps() {
-  // Fetch data from external API
-  const res = await axios.post(`https://countriesnow.space/api/v0.1/countries/states`, {
-    country: 'United states',
-  });
-  const flightSelectData = await res.data;
-  // Pass data to the page via props
-  return { props: { flightSelectData } };
-}
+// export async function getServerSideProps() {
+//   // Fetch data from external API
+//   const res = await axios.post(`https://countriesnow.space/api/v0.1/countries/states`, {
+//     country: 'United states',
+//   });
+//   const flightSelectData = await res.data;
+//   // Pass data to the page via props
+//   return { props: { flightSelectData } };
+// }
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -3,7 +3,7 @@ import { IInputProps } from '../models/inputProps';
 import styles from './inputAutocomplete.module.scss';
 import cn from 'classnames';
 
-export default function InputAutocomplete({ suggestions, placeholder, onClickFlightReference }: IInputProps) {
+export default function InputAutocomplete({ suggestions, placeholder, onClickFlightReference, loading }: IInputProps) {
   const [activeSuggestion, setActiveSuggestion] = useState(0);
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -95,8 +95,9 @@ export default function InputAutocomplete({ suggestions, placeholder, onClickFli
         type="text"
         onChange={onChange}
         onKeyDown={(event) => onKeyDown(event)}
-        value={userInput}
+        value={loading ? 'Loading...' : userInput}
         placeholder={placeholder}
+        disabled={loading}
       />
       {suggestionsListComponent}
     </>
