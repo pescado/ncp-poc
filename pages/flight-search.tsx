@@ -4,6 +4,7 @@ import styles from '../styles/flight-search.module.scss';
 import { useEffect, useState } from 'react';
 import { FlightSelectData } from '../models/FlightSelectData';
 import useSWR from 'swr';
+import { getCities } from '../api/api';
 
 export default function FlightSearch() {
   const router = useRouter();
@@ -26,35 +27,37 @@ export default function FlightSearch() {
 
   // const states = props.flightSelectData.data.states.map((state) => state.name);
 
-  const fetcher = (url: URL, payload?: string) => {
-    const options = {
-      method: payload ? 'POST' : 'GET',
-      ...(payload && { body: payload }),
-      headers: {
-        accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    };
+  // const fetcher = (url: URL, payload?: string) => {
+  //   const options = {
+  //     method: payload ? 'POST' : 'GET',
+  //     ...(payload && { body: payload }),
+  //     headers: {
+  //       accept: 'application/json',
+  //       'Content-Type': 'application/json',
+  //     },
+  //   };
 
-    return fetch(url, options).then((res) => res.json());
-  };
+  //   return fetch(url, options).then((res) => res.json());
+  // };
 
-  const bodyContent = { country: 'United States' };
+  // const bodyContent = { country: 'United States' };
 
-  const { data, error } = useSWR<FlightSelectData>(
-    ['https://countriesnow.space/api/v0.1/countries/states', JSON.stringify(bodyContent)],
-    fetcher,
-  );
+  // const { data, error } = useSWR<FlightSelectData>(
+  //   ['https://countriesnow.space/api/v0.1/countries/states', JSON.stringify(bodyContent)],
+  //   fetcher,
+  // );
 
-  useEffect(() => {
-    if (data) {
-      setTimeout(() => {
-        setLoading(!data && !error);
-        const statesData = (data as FlightSelectData).data.states.map((state: { name: string }) => state.name);
-        setStates(statesData);
-      }, 2000);
-    }
-  }, [data, error]);
+  // useEffect(() => {
+  //   if (data) {
+  //     setTimeout(() => {
+  //       setLoading(!data && !error);
+  //       const statesData = (data as FlightSelectData).data.states.map((state: { name: string }) => state.name);
+  //       setStates(statesData);
+  //     }, 0);
+  //   }
+  // }, [data, error]);
+
+  const { data, error, isValidating, mutate } = useSWR('/api/blah', getCities, { revalidateOnMount: true });
 
   return (
     <>
@@ -74,6 +77,14 @@ export default function FlightSearch() {
             loading={loading}
           ></InputAutocomplete>
         </div>
+        <div hidden={data && !error}>Loading...</div>
+        <ul hidden={!data && !error}>
+          {data
+            ? data.map((city) => {
+                return <li key={city.id}>{city.name}</li>;
+              })
+            : null}
+        </ul>
         <div className={styles.searchButtonContainer}>
           <button onClick={submitFlightSearch} disabled={fromFlightSearch && toFlightSearch ? false : true}>
             Search

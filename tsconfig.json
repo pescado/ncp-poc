@@ -29,7 +29,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/add-todo.jsx", "pages/todo-dashboard.jsx", "api/api.js", "pages/add-city.jsx"  ],
   "exclude": [
     "node_modules"
   ]

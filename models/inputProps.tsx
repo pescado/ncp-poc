@@ -7,3 +7,8 @@ export interface IInputProps extends IOnClickHandler {
 export interface IOnClickHandler {
   onClickFlightReference: (value: string) => void;
 }
+
+export interface ICity {
+  id: number;
+  name: string;
+}

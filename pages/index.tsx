@@ -4,6 +4,7 @@ import FlightSearch from './flight-search';
 import styles from '../styles/index.module.scss';
 import axios from 'axios';
 import { FlightSelectData } from '../models/FlightSelectData';
+import Link from 'next/link';
 
 export const siteTitle = 'Low Fares Done Right | Frontier Airlines';
 
@@ -18,6 +19,9 @@ export default function Home() {
       </Head>
       {/* <FlightSearch flightSelectData={props.flightSelectData}></FlightSearch> */}
       <FlightSearch></FlightSearch>
+      <Link href="./add-city">Add Cities</Link>
+      {/* <Link href="./todo-dashboard">Todo Dashboard</Link>
+      <Link href="./add-todo">Add Todo</Link> */}
     </div>
   );
 }
