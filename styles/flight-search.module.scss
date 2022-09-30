@@ -1,17 +1,46 @@
+@import '../styles/utils/';
+
 .container {
-  padding: 1rem;
-  width: 900px;
-  height: calc(40vh + 48px);
-  box-shadow: 0 5px 8px -4px rgba(0, 0, 0, 0.4);
-  border-top: 2px solid gray;
+  width: 95%;
+
+  @include tablet() {
+    width: 80%;
+  }
+
+  @include laptop() {
+    width: 65%;
+  }
+
+  @include desktop() {
+    width: 50%;
+  }
+
+  .header {
+    background: $primary;
+    color: $white;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1rem;
+  }
+
+  .panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    height: calc(40vh + 48px);
+    box-shadow: 0 5px 8px -4px rgba(0, 0, 0, 0.4);
+    border-top: 1px solid gray;
+  }
 
   .searchInputs {
     display: flex;
-    // justify-content: space-around;
   }
 
   .searchButtonContainer {
     display: flex;
-    justify-content: flex-end;
+    align-self: flex-end;
   }
 }

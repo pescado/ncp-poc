@@ -1,3 +1,6 @@
+// @import './variables/';
+@import './utils/';
+
 html,
 body {
   margin: 0;
@@ -6,7 +9,7 @@ body {
     'Droid Sans', 'Helvetica Neue', 'sans-serif';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #ffffff;
+  background: $white;
   height: 100vh;
 
   a {
@@ -19,12 +22,20 @@ body {
 
   input {
     padding: 0.5rem;
-    margin: 0.5rem;
+    margin: 0 1rem 1rem 0;
+    border: 1px solid #999;
+
+    &:focus-visible {
+      outline-width: 1px;
+      outline-color: #2c2c2c;
+      outline-style: solid;
+    }
   }
 
   button {
     margin: 0.5rem;
     padding: 0.5rem;
+    border: 1px solid #999;
   }
 }
 

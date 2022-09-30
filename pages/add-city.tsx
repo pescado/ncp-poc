@@ -1,21 +1,20 @@
-import Link from 'next/link';
 import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import useSWR from 'swr';
 
-import { getCities, addCity } from '../api/api';
+import { getCities, addCity } from '../api/city';
+import { ApiRoutes } from '../api/apiRoutes';
+import { ICity } from '../models/FlightSearchData';
+import { capitalizeInput } from '../utils/strings';
 
 const swrOptions = {
-  rollbackOnError: true,
   populateCache: false, // default true; unnecessary if optimisticData is used
   revalidate: false, // default true
 };
 
-console.log(swrOptions);
-
 export default function AddCity() {
   const [city, setCity] = useState('');
-  const { data, isValidating, mutate } = useSWR('/api/blah', getCities);
+  const { data, isValidating, mutate } = useSWR(ApiRoutes.CITIES, getCities);
 
   return (
     <div>
@@ -30,16 +29,11 @@ export default function AddCity() {
 
             const newCity = {
               id: Date.now(),
-              name: city,
+              name: capitalizeInput(city),
             };
 
             try {
-              // Update the local state immediately and fire the
-              // request. Since the API will return the updated
-              // data, there is no need to start a new revalidation
-              // and we can directly populate the cache.
-
-              await mutate(addCity(newCity), { ...swrOptions, optimisticData: [...data, newCity] });
+              await mutate(addCity(newCity), { ...swrOptions, optimisticData: [...(data as ICity[]), newCity] });
               toast.success('Successfully added the new city.');
             } catch (e) {
               console.log(e);
@@ -60,7 +54,6 @@ export default function AddCity() {
             })
           : null}
       </ul>
-      {/* <Link href="./todo-dashboard">Todo Dashboard</Link> */}
     </div>
   );
 }

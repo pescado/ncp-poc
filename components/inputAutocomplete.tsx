@@ -2,10 +2,12 @@ import { useState, KeyboardEvent } from 'react';
 import { IInputProps } from '../models/inputProps';
 import styles from './inputAutocomplete.module.scss';
 import cn from 'classnames';
+import Spinner from '../utils/spinner';
+import { ICity } from '../models/FlightSearchData';
 
 export default function InputAutocomplete({ suggestions, placeholder, onClickFlightReference, loading }: IInputProps) {
   const [activeSuggestion, setActiveSuggestion] = useState(0);
-  const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
+  const [filteredSuggestions, setFilteredSuggestions] = useState<ICity[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [userInput, setUserInput] = useState('');
 
@@ -16,10 +18,10 @@ export default function InputAutocomplete({ suggestions, placeholder, onClickFli
     // const filteredSuggestions = suggestions.filter(
     //   (suggestion: string) => suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1,
     // );
-    let filteredSuggestions: string[] = [];
+    let filteredSuggestions: ICity[] = [];
     if (suggestions) {
       filteredSuggestions = suggestions.filter(
-        (suggestion: string) => suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1,
+        (suggestion: ICity) => suggestion.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1,
       );
     }
 
@@ -43,7 +45,7 @@ export default function InputAutocomplete({ suggestions, placeholder, onClickFli
     if (e.key === '13') {
       setActiveSuggestion(0);
       setShowSuggestions(false);
-      setUserInput(filterSuggestions[activeSuggestion]);
+      setUserInput(filterSuggestions[activeSuggestion].name);
     }
     // User pressed the up arrow
     else if (e.key === '38') {
@@ -70,10 +72,10 @@ export default function InputAutocomplete({ suggestions, placeholder, onClickFli
             return (
               <li
                 className={cn({ [styles.suggestionActive]: index === activeSuggestion })}
-                key={suggestion}
-                onClick={() => onSelectItem(suggestion)}
+                key={suggestion.id}
+                onClick={() => onSelectItem(suggestion.name)}
               >
-                {suggestion}
+                {suggestion.name}
               </li>
             );
           })}
@@ -89,17 +91,17 @@ export default function InputAutocomplete({ suggestions, placeholder, onClickFli
   }
 
   return (
-    <>
+    <div className={styles.inputAutocomplete}>
       <input
-        className={styles.inputAutocomplete}
+        className={cn({ loading: loading })}
         type="text"
         onChange={onChange}
         onKeyDown={(event) => onKeyDown(event)}
-        value={loading ? 'Loading...' : userInput}
+        value={userInput}
         placeholder={placeholder}
         disabled={loading}
       />
       {suggestionsListComponent}
-    </>
+    </div>
   );
 }

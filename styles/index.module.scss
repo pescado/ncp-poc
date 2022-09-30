@@ -4,24 +4,5 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: white;
   height: 100vh;
-
-  @media (max-width: 599px) {
-    width: 90%;
-  }
-
-  // .booking {
-  //   width: 900px;
-  //   height: calc(40vh + 48px);
-  //   box-shadow: 0 5px 8px -4px rgba(0, 0, 0, 0.4);
-  // }
-
-  h1 {
-    color: #f0f0f0;
-    font-size: 28px;
-    font-weight: 300;
-    font-family: sans-serif;
-    margin-bottom: 60px;
-  }
 }
