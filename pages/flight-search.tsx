@@ -3,7 +3,7 @@ import InputAutocomplete from '../components/inputAutocomplete';
 import styles from '../styles/flight-search.module.scss';
 import { useState } from 'react';
 import useSWR, { useSWRConfig } from 'swr';
-import { getCities } from '../api/city';
+import { getCities } from '../api/api';
 import { ApiRoutes } from '../api/apiRoutes';
 
 export default function FlightSearch() {
@@ -59,7 +59,11 @@ export default function FlightSearch() {
             : null}
         </ul> */}
         <div className={styles.searchButtonContainer}>
-          <button onClick={submitFlightSearch} disabled={fromFlightSearch && toFlightSearch ? false : true}>
+          <button
+            className="f9-button-primary"
+            onClick={submitFlightSearch}
+            disabled={fromFlightSearch && toFlightSearch ? false : true}
+          >
             Search
           </button>
         </div>

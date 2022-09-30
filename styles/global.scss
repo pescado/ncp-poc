@@ -1,5 +1,6 @@
 // @import './variables/';
 @import './utils/';
+@import 'buttons';
 
 html,
 body {
@@ -30,12 +31,6 @@ body {
       outline-color: #2c2c2c;
       outline-style: solid;
     }
-  }
-
-  button {
-    margin: 0.5rem;
-    padding: 0.5rem;
-    border: 1px solid #999;
   }
 }
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import useSWR from 'swr';
 
-import { getCities, addCity } from '../api/city';
+import { getCities, addCity } from '../api/api';
 import { ApiRoutes } from '../api/apiRoutes';
 import { ICity } from '../models/FlightSearchData';
 import { capitalizeInput } from '../utils/strings';

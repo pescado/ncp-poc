@@ -1,6 +1,8 @@
+@use 'sass:color';
+
 $primary: #006643;
 $primary-dark: #004c8c; // rgb(0, 76, 140)
-$primary-light: #58a5f0;
+$primary-light: color.scale($primary, $lightness: 7%);
 $primary-opaque: #0277bdde; // rgba(2, 119, 189, 0.87)
 
 $secondary: #ffa000;
@@ -73,6 +75,7 @@ $dropdown-multiselect-item-border: rgba(0, 0, 0, 0.26);
 // Buttons
 $btn-bg: $primary;
 $btn-color: $white;
+$btn-active: #0a6183;
 
 // Breakpoints
 $breakpoint-sm: 576px;

@@ -1,0 +1,30 @@
+.f9-button-primary {
+  color: $white;
+  background-color: $primary;
+  border: 1px solid $white;
+  text-transform: uppercase;
+  outline: none;
+  margin: 0 0.5rem 0.5rem 0;
+  padding: 1rem;
+  font-weight: 600;
+
+  &:hover {
+    background-color: $primary-light;
+  }
+
+  &:focus {
+    box-shadow: 5px 5px 6px -4px gray;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  &:active {
+    background-color: $btn-active;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    color: rgba(0, 0, 0, 0.26);
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+}
