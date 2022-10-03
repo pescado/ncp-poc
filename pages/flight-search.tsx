@@ -5,6 +5,7 @@ import { useState } from 'react';
 import useSWR, { useSWRConfig } from 'swr';
 import { getCities } from '../api/api';
 import { ApiRoutes } from '../api/apiRoutes';
+import cn from 'classnames';
 
 export default function FlightSearch() {
   const router = useRouter();
@@ -35,32 +36,26 @@ export default function FlightSearch() {
   return (
     <div className={styles.container}>
       <h2 className={styles.header}>Search Flights</h2>
-      <div className={styles.panel}>
-        <div className={styles.searchInputs}>
+      <div className={cn('flex-column', 'flex-space-between', styles.panel)}>
+        <div className="flex">
           <InputAutocomplete
             suggestions={data}
             placeholder="From"
             onClickFlightReference={submitFromFlightSearch}
             loading={isValidating}
+            inputClasses={['input-top', 'input-left']}
           ></InputAutocomplete>
           <InputAutocomplete
             suggestions={data}
             placeholder="To"
             onClickFlightReference={submitToFlightSearch}
             loading={isValidating}
+            inputClasses={['input-top']}
           ></InputAutocomplete>
         </div>
-        {/* <div hidden={data && !error}>Loading...</div>
-        <ul hidden={!data && !error}>
-          {data
-            ? data.map((city) => {
-                return <li key={city.id}>{city.name}</li>;
-              })
-            : null}
-        </ul> */}
-        <div className={styles.searchButtonContainer}>
+        <div className="flex flex-align-end">
           <button
-            className="f9-button-primary"
+            className="f9-btn-primary btn-right btn-bottom"
             onClick={submitFlightSearch}
             disabled={fromFlightSearch && toFlightSearch ? false : true}
           >

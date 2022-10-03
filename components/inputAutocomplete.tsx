@@ -5,7 +5,13 @@ import cn from 'classnames';
 import Spinner from '../utils/spinner';
 import { ICity } from '../models/FlightSearchData';
 
-export default function InputAutocomplete({ suggestions, placeholder, onClickFlightReference, loading }: IInputProps) {
+export default function InputAutocomplete({
+  suggestions,
+  placeholder,
+  onClickFlightReference,
+  loading,
+  inputClasses = [],
+}: IInputProps) {
   const [activeSuggestion, setActiveSuggestion] = useState(0);
   const [filteredSuggestions, setFilteredSuggestions] = useState<ICity[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -93,7 +99,7 @@ export default function InputAutocomplete({ suggestions, placeholder, onClickFli
   return (
     <div className={styles.inputAutocomplete}>
       <input
-        className={cn({ loading: loading })}
+        className={cn(...inputClasses, { loading: loading })}
         type="text"
         onChange={onChange}
         onKeyDown={(event) => onKeyDown(event)}

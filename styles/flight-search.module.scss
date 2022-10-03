@@ -26,21 +26,9 @@
   }
 
   .panel {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     padding: 1rem;
     height: calc(40vh + 48px);
-    box-shadow: 0 5px 8px -4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 5px 8px -4px $semi-transparent;
     border-top: 1px solid gray;
-  }
-
-  .searchInputs {
-    display: flex;
-  }
-
-  .searchButtonContainer {
-    display: flex;
-    align-self: flex-end;
   }
 }

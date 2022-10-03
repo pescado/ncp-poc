@@ -29,7 +29,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next.config.js"api/city.ts
+    "next.config.js"
   ],
   "exclude": [
     "node_modules"

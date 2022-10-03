@@ -1,12 +1,8 @@
 @import '../styles/utils/';
 
 .inputAutocomplete {
-  padding: 0.5rem;
-
   input {
-    // border: 1px solid #999;
     width: 150px;
-    // outline: none;
     @include truncate(150px);
   }
 

@@ -1,8 +1,4 @@
 .container {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100vh; // The vh unit doesn't work properly on mobile devices, so this will need to change
 }

@@ -27,6 +27,8 @@ $danger: #f44336;
 $error: #f44336;
 $invalid: #f44336;
 
+$semi-transparent: rgba(0, 0, 0, 0.4);
+
 // Typography
 //
 // Font, line-height, and color for body text, headings, and more.
@@ -72,10 +74,15 @@ $input-focus-bottom-border: $primary-opaque;
 $inputVerticalPadding: 10px;
 $dropdown-multiselect-item-border: rgba(0, 0, 0, 0.26);
 
+$input-margin: 1rem;
+$input-padding: 0.5rem;
+
 // Buttons
-$btn-bg: $primary;
 $btn-color: $white;
-$btn-active: #0a6183;
+$btn-bg: $primary;
+$btn-bg-primary-active: #0a6183;
+$btn-color-disabled: rgba(0, 0, 0, 0.26);
+$btn-bg-disabled: rgba(0, 0, 0, 0.12);
 
 // Breakpoints
 $breakpoint-sm: 576px;
@@ -85,11 +92,3 @@ $breakpoint-xl: 1200px;
 $breakpoint-xxl: 1550px;
 
 // Other
-$body-color: $black;
-
-$selected-bg: #025f97;
-$accent: #025f97;
-$button-pressed-text: #ffffff;
-$selected-text: #ffffff;
-$tabstrip-item-default: $primary-opaque;
-$tabstrip-item-active-bottom-border: $primary-opaque;
