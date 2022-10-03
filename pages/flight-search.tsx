@@ -2,14 +2,18 @@ import { useRouter } from 'next/router';
 import InputAutocomplete from '../components/inputAutocomplete';
 import styles from '../styles/flight-search.module.scss';
 import { useState } from 'react';
-import { FlightSelectData } from '../models/FlightSelectData';
-import useSWR from 'swr';
+import useSWR, { useSWRConfig } from 'swr';
+import { getCities } from '../api/api';
+import { ApiRoutes } from '../api/apiRoutes';
+import cn from 'classnames';
 
-export default function FlightSearch(props: { flightSelectData: FlightSelectData }) {
+export default function FlightSearch() {
   const router = useRouter();
 
   const [fromFlightSearch, setFromFlightSearch] = useState('');
   const [toFlightSearch, setToFlightSearch] = useState('');
+  // const [loading, setLoading] = useState(true);
+  const [states, setStates] = useState([] as string[]);
 
   const submitFromFlightSearch = (value: string) => {
     setFromFlightSearch(value);
@@ -22,30 +26,43 @@ export default function FlightSearch(props: { flightSelectData: FlightSelectData
     router.push('/flight-select');
   };
 
-  const states = props.flightSelectData.data.states.map((state) => state.name);
+  const { cache } = useSWRConfig();
+  const { data, error, isValidating } = useSWR(ApiRoutes.CITIES, getCities, {
+    revalidateOnMount: !cache.get(ApiRoutes.CITIES),
+  });
+
+  // const { data, error, isValidating } = useSWR(ApiRoutes.CITIES, getCities, { revalidateOnMount: true });
 
   return (
-    <>
-      <h2>Search Flights</h2>
-      <div className={styles.container}>
-        <div className={styles.searchInputs}>
+    <div className={styles.container}>
+      <h2 className={styles.header}>Search Flights</h2>
+      <div className={cn('flex-column', 'flex-space-between', styles.panel)}>
+        <div className="flex">
           <InputAutocomplete
-            suggestions={states}
+            suggestions={data}
             placeholder="From"
             onClickFlightReference={submitFromFlightSearch}
+            loading={isValidating}
+            inputClasses={['input-top', 'input-left']}
           ></InputAutocomplete>
           <InputAutocomplete
-            suggestions={states}
+            suggestions={data}
             placeholder="To"
             onClickFlightReference={submitToFlightSearch}
+            loading={isValidating}
+            inputClasses={['input-top']}
           ></InputAutocomplete>
         </div>
-        <div className={styles.searchButtonContainer}>
-          <button onClick={submitFlightSearch} disabled={fromFlightSearch && toFlightSearch ? false : true}>
+        <div className="flex flex-align-end">
+          <button
+            className="f9-btn-primary btn-right btn-bottom"
+            onClick={submitFlightSearch}
+            disabled={fromFlightSearch && toFlightSearch ? false : true}
+          >
             Search
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }

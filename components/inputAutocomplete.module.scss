@@ -1,32 +1,38 @@
+@import '../styles/utils/';
+
 .inputAutocomplete {
-  border: 1px solid #999;
-  padding: 0.5rem;
-  width: 150px;
-}
-.noSuggestions {
-  color: #999;
-  padding: 0.5rem;
-}
-.suggestions {
-  border: 1px solid #999;
-  border-top-width: 0;
-  list-style: none;
-  margin-top: 0;
-  max-height: 143px;
-  overflow: auto;
-  padding-left: 0;
-  width: calc(150px + 1rem);
-  li {
+  input {
+    width: 150px;
+    @include truncate(150px);
+  }
+
+  .noSuggestions {
+    color: #999;
     padding: 0.5rem;
-    &:not(:last-of-type) {
-      border-bottom: 1px solid #999;
+  }
+
+  .suggestions {
+    border: 1px solid #999;
+    border-top-width: 0;
+    list-style: none;
+    margin-top: 0;
+    max-height: 143px;
+    overflow: auto;
+    padding-left: 0;
+    width: calc(150px + 1rem);
+    li {
+      padding: 0.5rem;
+      &:not(:last-of-type) {
+        border-bottom: 1px solid #999;
+      }
     }
   }
-}
-.suggestionActive,
-.suggestions li:hover {
-  background-color: #008f68;
-  color: #fae042;
-  cursor: pointer;
-  font-weight: 700;
+
+  .suggestionActive,
+  .suggestions li:hover {
+    background-color: #008f68;
+    color: #fae042;
+    cursor: pointer;
+    font-weight: 700;
+  }
 }

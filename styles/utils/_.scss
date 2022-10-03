@@ -1,0 +1,57 @@
+@import 'mixins';
+@import 'spinner';
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-space-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex-space-evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flex-align-start {
+  align-self: flex-start;
+}
+
+.flex-align-end {
+  align-self: flex-end;
+}

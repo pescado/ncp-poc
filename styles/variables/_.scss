@@ -1,0 +1,94 @@
+@use 'sass:color';
+
+$primary: #006643;
+$primary-dark: #004c8c; // rgb(0, 76, 140)
+$primary-light: color.scale($primary, $lightness: 7%);
+$primary-opaque: #0277bdde; // rgba(2, 119, 189, 0.87)
+
+$secondary: #ffa000;
+$secondary-dark: #ff7200;
+$secondary-light: #ffd149;
+$secondary-opaque: #ffa000de;
+
+$black: rgba(0, 0, 0, 0.87);
+$gray: #f5f5f5;
+$gray-dark: #ededed;
+$gray-light: #fafafa;
+$white: #ffffff;
+
+$positive: #4caf50;
+$negative: $secondary-dark;
+$action-needed: $secondary-dark;
+
+$info: #26c6da;
+$success: $positive;
+$warning: #ffd000;
+$danger: #f44336;
+$error: #f44336;
+$invalid: #f44336;
+
+$semi-transparent: rgba(0, 0, 0, 0.4);
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+$font-family-sans-serif: 'Roboto', sans-serif;
+$font-family-text: 'Open Sans', sans-serif;
+$font-family-base: 'Roboto', sans-serif;
+$font-size: 14px;
+// $font-size-lg:                $font-size-base * 1.25 !default;
+// $font-size-sm:                $font-size-base * .875 !default;
+
+// TODO: if ours can be proportional to the base size, use this approach
+// $h1-font-size:                $font-size-base * 2.5 !default;
+// $h2-font-size:                $font-size-base * 2 !default;
+// $h3-font-size:                $font-size-base * 1.75 !default;
+// $h4-font-size:                $font-size-base * 1.5 !default;
+// $h5-font-size:                $font-size-base * 1.25 !default;
+// $h6-font-size:                $font-size-base !default;
+
+$text: $black;
+$text-secondary: rgba(0, 0, 0, 0.54);
+$text-hint: rgba(0, 0, 0, 0.38);
+$text-disabled: rgba(0, 0, 0, 0.26);
+$text-light: rgba(255, 255, 255, 0.87);
+$text-light-secondary: rgba(255, 255, 255, 0.54);
+$text-light-hint: rgba(255, 255, 255, 0.38);
+$text-light-disabled: rgba(255, 255, 255, 0.26);
+$text-read-only: $text-hint;
+
+// Links
+$link-active: $secondary-opaque;
+$link-focus: $secondary-opaque;
+
+// Inputs
+$input: rgba(0, 0, 0, 0.87);
+$input-label: rgba(0, 0, 0, 0.54);
+$input-description: rgba(0, 0, 0, 0.54);
+$input-disabled: rgba(0, 0, 0, 0.38);
+$input-disabled-label: rgba(0, 0, 0, 0.38);
+$input-focus-label: $primary-opaque;
+$input-bottom-border: rgba(0, 0, 0, 0.54);
+$input-focus-bottom-border: $primary-opaque;
+$inputVerticalPadding: 10px;
+$dropdown-multiselect-item-border: rgba(0, 0, 0, 0.26);
+
+$input-margin: 1rem;
+$input-padding: 0.5rem;
+
+// Buttons
+$btn-color: $white;
+$btn-bg: $primary;
+$btn-bg-primary-active: #0a6183;
+$btn-color-disabled: rgba(0, 0, 0, 0.26);
+$btn-bg-disabled: rgba(0, 0, 0, 0.12);
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1550px;
+
+// Other
