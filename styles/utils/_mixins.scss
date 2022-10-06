@@ -14,13 +14,13 @@
 }
 
 @mixin laptop() {
-  @media (min-width: $breakpoint-xl) {
+  @media (min-width: $breakpoint-lg) {
     @content;
   }
 }
 
 @mixin desktop() {
-  @media (min-width: $breakpoint-xxl) {
+  @media (min-width: $breakpoint-xl) {
     @content;
   }
 }

@@ -1,4 +1,3 @@
-import reportWebVitals from '../reportWebVitals';
 import Head from 'next/head';
 import FlightSearch from './flight-search';
 import styles from '../styles/index.module.scss';

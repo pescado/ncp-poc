@@ -1,11 +1,11 @@
 @import 'mixins';
 @import 'spinner';
 
-.align-left {
+.align--left {
   text-align: left;
 }
 
-.align-right {
+.align--right {
   text-align: right;
 }
 
@@ -13,45 +13,53 @@
   display: flex;
 }
 
-.flex-column {
+.flex--column {
   display: flex;
   flex-direction: column;
 }
 
-.flex-space-between {
+.flex--space-between {
   display: flex;
   justify-content: space-between;
 }
 
-.flex-space-around {
+.flex--space-around {
   display: flex;
   justify-content: space-around;
 }
 
-.flex-space-evenly {
+.flex--space-evenly {
   display: flex;
   justify-content: space-evenly;
 }
 
-.flex-center {
+.flex--center {
   display: flex;
   justify-content: center;
 }
 
-.flex-start {
+.flex--start {
   display: flex;
   justify-content: flex-start;
 }
 
-.flex-end {
+.flex--end {
   display: flex;
   justify-content: flex-end;
 }
 
-.flex-align-start {
+.flex-align--start {
   align-self: flex-start;
 }
 
-.flex-align-end {
+.flex-align--end {
   align-self: flex-end;
+}
+
+.text--sm {
+  font-size: $text-sm-font-size;
+}
+
+.text--xs {
+  font-size: $text-xs-font-size;
 }

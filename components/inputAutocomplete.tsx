@@ -2,7 +2,6 @@ import { useState, KeyboardEvent } from 'react';
 import { IInputProps } from '../models/inputProps';
 import styles from './inputAutocomplete.module.scss';
 import cn from 'classnames';
-import Spinner from '../utils/spinner';
 import { ICity } from '../models/FlightSearchData';
 
 export default function InputAutocomplete({
@@ -90,7 +89,7 @@ export default function InputAutocomplete({
     } else {
       suggestionsListComponent = (
         <div className={styles.noSuggestions}>
-          <em>No suggestions, you're on your own!</em>
+          <em>No suggestions, you&apos;re on your own!</em>
         </div>
       );
     }
